@@ -112,9 +112,16 @@ def showListUsage():
     print("5" not in exampleList)
     helperList = ["5", "6", "7"]
     print(exampleList + helperList)
-    print(exampleList * 3)
+    exampleList *= 3
+    print(exampleList)
     print(exampleList[1])
     print(exampleList[1:3])
+    print(exampleList[::2])
+    print(len(exampleList))
+    print(min(exampleList))
+    print(max(exampleList))
+    print(exampleList.index('3', 3, 9))
+    print(exampleList.count("1"))
 
 # def showTupleUsage():
 #     f
@@ -137,4 +144,4 @@ def showListUsage():
 
 # showIntUsage()
 # showFloatUsage()
-showIteratorUsage()
+showListUsage()
