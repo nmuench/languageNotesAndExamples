@@ -6,6 +6,8 @@ dictOfBuiltInTypes = [
     "set", "frozenset", "dict"
 ]
 
+dictOfSpecializedDataTypes = ["namedtuple"]
+
 def showBooleanUsage():
     exampleBool = Boolean()
     exampleBool = True
@@ -108,11 +110,12 @@ def showIteratorUsage():
 
 def showListUsage():
     exampleList = ["1", "2", "3", "4"]
+    ##################### Common Sequence Operations Region
     print("1" in exampleList)
     print("5" not in exampleList)
     helperList = ["5", "6", "7"]
     print(exampleList + helperList)
-    exampleList *= 3
+    exampleList = exampleList * 3
     print(exampleList)
     print(exampleList[1])
     print(exampleList[1:3])
@@ -122,13 +125,143 @@ def showListUsage():
     print(max(exampleList))
     print(exampleList.index('3', 3, 9))
     print(exampleList.count("1"))
+    print(exampleList[-1])
+    print(exampleList[-2])
+    ##################### End Region
+    ##################### Mutable Operations Region
+    exampleList[0] = "5"
+    print(exampleList)
+    helperList = ["a", "b", "c"]
+    print(exampleList)
+    exampleList[0:2] = helperList
+    print(exampleList)
+    del exampleList[0:2]
+    print(exampleList)
+    exampleList[0:5:2] = helperList
+    print(exampleList)
+    del exampleList[0:5:2]
+    print(exampleList)
+    exampleList.append("Appended")
+    print(exampleList)
+    exampleList.clear()
+    print(exampleList)
+    exampleList = helperList.copy()
+    print(exampleList)
+    print(helperList)
+    helperList[0] = "Test"
+    print(exampleList)
+    #Copy does not pass between the two copies. They are stored separately
+    print(helperList)
+    exampleList.extend(["This", "Should", "Be", "Extended"])
+    print(exampleList)
+    exampleList *= 3
+    print(exampleList)
+    exampleList.insert(1, "Second Element")
+    print(exampleList)
+    exampleList.pop(1)
+    print(exampleList)
+    exampleList.remove("This")
+    print(exampleList)
+    exampleList.reverse()
+    print(exampleList)
+    ##################### End Region
+    exampleList.sort(key=str.lower)
+    print(exampleList)
 
-# def showTupleUsage():
-#     f
-# def showRangeUsage():
-#     f
-# def showStringUsage():
-#     f
+def showTupleUsage():
+    exampleTuple = ("1", "2", "3", "4")
+    ##################### Common Sequence Operations Region
+    print("1" in exampleTuple)
+    print("5" not in exampleTuple)
+    helperTuple = ("5", "6", "7")
+    print(exampleTuple + helperTuple)
+    exampleTuple = exampleTuple * 3
+    print(exampleTuple)
+    print(exampleTuple[1])
+    print(exampleTuple[1:3])
+    print(exampleTuple[::2])
+    print(len(exampleTuple))
+    print(min(exampleTuple))
+    print(max(exampleTuple))
+    print(exampleTuple.index('3', 3, 9))
+    print(exampleTuple.count("1"))
+    print(exampleTuple[-1])
+    print(exampleTuple[-2])
+    ##################### End Region
+    print(hash(exampleTuple))
+
+# # TODO: Make correct
+# def showNamedTupleUsage():
+#     exampleTuple = ("1", "2", "3", "4")
+#     ##################### Common Sequence Operations Region
+#     print("1" in exampleTuple)
+#     print("5" not in exampleTuple)
+#     helperTuple = ("5", "6", "7")
+#     print(exampleTuple + helperTuple)
+#     exampleTuple = exampleTuple * 3
+#     print(exampleTuple)
+#     print(exampleTuple[1])
+#     print(exampleTuple[1:3])
+#     print(exampleTuple[::2])
+#     print(len(exampleTuple))
+#     print(min(exampleTuple))
+#     print(max(exampleTuple))
+#     print(exampleTuple.index('3', 3, 9))
+#     print(exampleTuple.count("1"))
+#     print(exampleNamedTuple[-1])
+#     print(exampleNamedTuple[-2])
+#     ##################### End Region
+def showRangeUsage():
+    exampleRange = range(0, 10)
+    ##################### Common Sequence Operations Region
+    print(1 in exampleRange)
+    print(10 not in exampleRange)
+    print(exampleRange)
+    print(exampleRange[1])
+    print(exampleRange[1:3])
+    print(exampleRange[::2])
+    print(exampleRange[-1])
+    print(exampleRange[-2])
+    ##################### End Region
+def showStringUsage():
+    exampleString = 'Single quotes allow us to use "" within the string'
+    exampleString = "Double quotes allow us to use '' within the string"
+    exampleString = '''Triple quotes allow us to use '' and "" within the string'''
+    exampleString = """
+    Triple quotes allow us to use '' and "" within the string,
+    plus we can span multiple lines"""
+    exampleString = str("Hello, this is a string")
+    ##################### Common Sequence Operations Region
+    print("Hello" in exampleString)
+    print("5" not in exampleString)
+    helperString = " this will be added on"
+    print(exampleString + helperString)
+    exampleString = "This will be repetead three times "
+    exampleString = exampleString * 3
+    print(exampleString)
+    print(exampleString[1])
+    print(exampleString[1:3])
+    print(exampleString[::2])
+    print(len(exampleString))
+    print(min(exampleString))
+    print(max(exampleString))
+    print(exampleString.index('will', 3, 9))
+    print(exampleString.count("be"))
+    print(exampleString[-2])
+    print(exampleString[-3])
+    ##################### End Region
+    ##################### String Methods Region
+    exampleString = "this is an example string"
+    print(exampleString.capitalize())
+    exampleString = "Uppercase becomes lowercase"
+    print(exampleString.casefold())
+    print(exampleString.center(50))
+    exampleString = "Repeat Repeat Repeat"
+    print(exampleString.count("Repeat"))
+    print(exampleString.encode())
+    print(exampleString.endswith("Repeat"))
+    #THERE ARE MANY MORE OF THESE, BUT YOU CAN LOOK THEM UP
+    ##################### End Region
 # def showBytesUsage():
 #     f
 # def showByteArrayUsage():
@@ -144,4 +277,4 @@ def showListUsage():
 
 # showIntUsage()
 # showFloatUsage()
-showListUsage()
+showStringUsage()
