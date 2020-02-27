@@ -9,7 +9,6 @@ dictOfBuiltInTypes = [
 dictOfSpecializedDataTypes = ["namedtuple"]
 
 def showBooleanUsage():
-    exampleBool = Boolean()
     exampleBool = True
     if exampleBool:
         print("exampleBool is True")
@@ -468,7 +467,7 @@ def showFrozenSetUsage():
     print(exampleFrozenSet ^ otherFrozenSet)
     ###### End Region
 
-def showDictUsage():
-    f
+# def showDictUsage():
+#     f
 
 showFrozenSetUsage()
