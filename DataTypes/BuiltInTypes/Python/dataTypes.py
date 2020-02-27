@@ -223,6 +223,7 @@ def showRangeUsage():
     print(exampleRange[-1])
     print(exampleRange[-2])
     ##################### End Region
+
 def showStringUsage():
     exampleString = 'Single quotes allow us to use "" within the string'
     exampleString = "Double quotes allow us to use '' within the string"
@@ -262,19 +263,212 @@ def showStringUsage():
     print(exampleString.endswith("Repeat"))
     #THERE ARE MANY MORE OF THESE, BUT YOU CAN LOOK THEM UP
     ##################### End Region
-# def showBytesUsage():
-#     f
-# def showByteArrayUsage():
-#     f
-# def showMemoryviewsage():
-#     f
-# def showSetUsage():
-#     f
-# def showFroaenSetUsage():
-#     f
-# def showDictUsage():
-#     f
 
-# showIntUsage()
-# showFloatUsage()
-showStringUsage()
+def showBytesUsage():
+    exampleBytes = bytes()
+    exampleBytes = b'still allows embedded "double" quotes'
+    print(exampleBytes)
+    exampleBytes = b"still allows embedded 'single' quotes"
+    print(exampleBytes)
+    exampleBytes = b'''3 single quotes'''
+    print(exampleBytes)
+    exampleBytes = b"""3 double quotes"""
+    print(exampleBytes)
+    exampleBytes = bytes.fromhex('2Ef0 F1f2 ')
+    print(exampleBytes)
+    exampleBytes = bytes.fromhex('54657374')
+    print(exampleBytes)
+    #Check documentation for more functions, these cover basics
+
+def showByteArrayUsage():
+    exampleBytesArray = bytearray()
+    exampleBytesArray = bytearray.fromhex('546573742069732074686973')
+    print(exampleBytesArray)
+    ##################### Mutable Operations Region
+    exampleBytesArray[0] = 87
+    print(exampleBytesArray)
+    helperByteArray = bytearray(b"hi")
+    print(exampleBytesArray)
+    exampleBytesArray[0:2] = helperByteArray
+    print(exampleBytesArray)
+    del exampleBytesArray[0:2]
+    print(exampleBytesArray)
+    exampleBytesArray[0:6:3] = helperByteArray
+    print(exampleBytesArray)
+    del exampleBytesArray[0:5:2]
+    print(exampleBytesArray)
+    exampleBytesArray.append(33)
+    print(exampleBytesArray)
+    exampleBytesArray.clear()
+    print(exampleBytesArray)
+    exampleBytesArray = helperByteArray.copy()
+    print(exampleBytesArray)
+    print(helperByteArray)
+    exampleBytesArray[0] = 48
+    print(exampleBytesArray)
+    #Copy does not pass between the two copies. They are stored separately
+    print(helperByteArray)
+    exampleBytesArray.extend(bytearray(b"This Should Be Extended"))
+    print(exampleBytesArray)
+    exampleBytesArray *= 3
+    print(exampleBytesArray)
+    exampleBytesArray.insert(1, 115)
+    print(exampleBytesArray)
+    exampleBytesArray.pop(1)
+    print(exampleBytesArray)
+    exampleBytesArray.remove(84)
+    print(exampleBytesArray)
+    exampleBytesArray.reverse()
+    print(exampleBytesArray)
+    ##################### End Region
+    #Check documentation for more functions, these cover basics
+
+def showMemoryviewsage():
+    exampleMemoryView = memoryview()
+    #Used to access the internal data of an object that supports the buffer protocol
+    #without copying. The types bytes and bytearray both support it.
+
+def showSetUsage():
+    #Sets contain unordered collections of hashable objects
+    exampleSet = set([1, 2, 3, 4 , 5])
+    ###### Operations for set and frozen set Region
+    print(exampleSet)
+    print(len(exampleSet))
+    print(1 in exampleSet)
+    print(6 not in exampleSet)
+    otherSet = set([6, 7, 8, 9])
+    print(exampleSet.isdisjoint(otherSet))
+    otherSet = set([5, 6, 7, 8, 9])
+    print(not exampleSet.isdisjoint(otherSet))
+    otherSet = set([2, 3, 4])
+    print(otherSet.issubset(exampleSet))
+    otherSet = set([5, 6, 7, 8, 9])
+    print(not otherSet.issubset(exampleSet))
+    #Check if example set is a subset of other set another way
+    otherSet = set([0,1,2,3,4,5,6,7])
+    print(exampleSet <= otherSet) #True
+    #Check if example set is a proper subset of otherSet, subset and not equal to.
+    print(exampleSet < otherSet) #True
+    print(otherSet.issuperset(exampleSet)) # True
+    print(otherSet >= exampleSet) # True
+    print(otherSet > exampleSet) #True
+    #Check if example set is a subset of other set another way
+    #This is to show off the "proper subset" distinction
+    otherSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet <= otherSet) # True
+    #Check if example set is a proper subset of otherSet, subset and not equal to.
+    print(exampleSet < otherSet) #False
+    print(otherSet.issuperset(exampleSet)) #True
+    print(otherSet >= exampleSet) #True
+    print(otherSet > exampleSet) #False
+    otherSet = set([4,5,6,7])
+    print(exampleSet.union(otherSet)) #Note that the function versions of these accept any iterable, not just sets
+    print(exampleSet | otherSet)
+    print(exampleSet.intersection(otherSet))  #Note that the function versions of these accept any iterable, not just sets
+    print(exampleSet & otherSet)
+    print(exampleSet.difference(otherSet))  #Note that the function versions of these accept any iterable, not just sets
+    print(exampleSet - otherSet)
+    print(otherSet.difference(exampleSet))  #Note that the function versions of these accept any iterable, not just sets
+    print(otherSet - exampleSet)
+    print(exampleSet.symmetric_difference(otherSet))  #Note that the function versions of these accept any iterable, not just sets
+    print(exampleSet ^ otherSet)
+    ###### End Region
+    print("Set only operations: ")
+    ###### Set Only Region
+    exampleSet = set([1, 2, 3, 4 , 5])
+    otherSet = set([4,5,6,7])
+    exampleSet.update(otherSet) #The operator version is |=
+    print(exampleSet)
+    exampleSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet)
+    exampleSet |= otherSet
+    print(exampleSet)
+    exampleSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet)
+    exampleSet.intersection_update(otherSet) #Operator version is &=
+    print(exampleSet)
+    exampleSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet)
+    exampleSet &= otherSet
+    print(exampleSet)
+    exampleSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet)
+    exampleSet.difference_update(otherSet) #Operator version is -=
+    print(exampleSet)
+    exampleSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet)
+    exampleSet -= otherSet
+    print(exampleSet)
+    exampleSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet)
+    exampleSet.symmetric_difference_update(otherSet) #Operator version is ^=
+    print(exampleSet)
+    exampleSet = set([1, 2, 3, 4 , 5])
+    print(exampleSet)
+    exampleSet ^= otherSet
+    print(exampleSet)
+    exampleSet.add(8)
+    print(exampleSet)
+    exampleSet.remove(1) #Error if not present
+    print(exampleSet)
+    exampleSet.discard(8) #Checks and removes if present
+    print(exampleSet)
+    exampleSet.discard(9) # No error even though 9 isn't present
+    print(exampleSet)
+    elem = exampleSet.pop() #Removes an arbitrary element
+    print(elem)
+    print(exampleSet)
+    exampleSet.clear()
+    print(exampleSet)
+    ###### End Region
+
+def showFrozenSetUsage():
+    #FrozenSets contain unordered collections of hashable objects
+    exampleFrozenSet = frozenset([1, 2, 3, 4 , 5])
+    ###### Operations for FrozenSet and frozen FrozenSet Region
+    print(exampleFrozenSet)
+    print(len(exampleFrozenSet))
+    print(1 in exampleFrozenSet)
+    print(6 not in exampleFrozenSet)
+    otherFrozenSet = frozenset([6, 7, 8, 9])
+    print(exampleFrozenSet.isdisjoint(otherFrozenSet))
+    otherFrozenSet = frozenset([5, 6, 7, 8, 9])
+    print(not exampleFrozenSet.isdisjoint(otherFrozenSet))
+    otherFrozenSet = frozenset([2, 3, 4])
+    print(otherFrozenSet.issubset(exampleFrozenSet))
+    otherFrozenSet = frozenset([5, 6, 7, 8, 9])
+    print(not otherFrozenSet.issubset(exampleFrozenSet))
+    #Check if example FrozenSet is a subFrozenSet of other FrozenSet another way
+    otherFrozenSet = frozenset([0,1,2,3,4,5,6,7])
+    print(exampleFrozenSet <= otherFrozenSet) #True
+    #Check if example FrozenSet is a proper subFrozenSet of otherFrozenSet, subFrozenSet and not equal to.
+    print(exampleFrozenSet < otherFrozenSet) #True
+    print(otherFrozenSet.issuperset(exampleFrozenSet)) # True
+    print(otherFrozenSet >= exampleFrozenSet) # True
+    print(otherFrozenSet > exampleFrozenSet) #True
+    #Check if example FrozenSet is a subFrozenSet of other FrozenSet another way
+    #This is to show off the "proper subFrozenSet" distinction
+    otherFrozenSet = frozenset([1, 2, 3, 4 , 5])
+    print(exampleFrozenSet <= otherFrozenSet) # True
+    #Check if example FrozenSet is a proper subFrozenSet of otherFrozenSet, subFrozenSet and not equal to.
+    print(exampleFrozenSet < otherFrozenSet) #False
+    print(otherFrozenSet.issuperset(exampleFrozenSet)) #True
+    print(otherFrozenSet >= exampleFrozenSet) #True
+    print(otherFrozenSet > exampleFrozenSet) #False
+    otherFrozenSet = frozenset([4,5,6,7])
+    print(exampleFrozenSet.union(otherFrozenSet)) #Note that the function versions of these accept any iterable, not just FrozenSets
+    print(exampleFrozenSet | otherFrozenSet)
+    print(exampleFrozenSet.intersection(otherFrozenSet))  #Note that the function versions of these accept any iterable, not just FrozenSets
+    print(exampleFrozenSet & otherFrozenSet)
+    print(exampleFrozenSet.difference(otherFrozenSet))  #Note that the function versions of these accept any iterable, not just FrozenSets
+    print(exampleFrozenSet - otherFrozenSet)
+    print(otherFrozenSet.difference(exampleFrozenSet))  #Note that the function versions of these accept any iterable, not just FrozenSets
+    print(otherFrozenSet - exampleFrozenSet)
+    print(exampleFrozenSet.symmetric_difference(otherFrozenSet))  #Note that the function versions of these accept any iterable, not just FrozenSets
+    print(exampleFrozenSet ^ otherFrozenSet)
+    ###### End Region
+
+def showDictUsage():
+    f
+
+showFrozenSetUsage()
