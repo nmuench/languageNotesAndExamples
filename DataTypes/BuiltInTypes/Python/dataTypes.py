@@ -323,7 +323,8 @@ def showByteArrayUsage():
     #Check documentation for more functions, these cover basics
 
 def showMemoryviewsage():
-    exampleMemoryView = memoryview()
+    exampleMemoryView = memoryview(b'This is a memory view')
+    print(exampleMemoryView)
     #Used to access the internal data of an object that supports the buffer protocol
     #without copying. The types bytes and bytearray both support it.
 

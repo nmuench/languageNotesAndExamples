@@ -1,17 +1,9 @@
 import datetime
-specializedTypesModules = ["datetime",
-                            "calendar",
-                            "collections",
-                            "heapq",
-                            "bisect",
-                            "array",
-                            "weakref",
-                            "types",
-                            "copy",
-                            "pprint",
-                            "reprlib",
-                            "enum"
-                          ]
+dateTimeTpyes = ["date"
+                 "time",
+                 "datetime",
+                 "timedelta",
+                 "timezone"]
 
 def showDatetimeUsage():
     checkDate = datetime.date(1997, 8, 31)
@@ -41,4 +33,10 @@ def showDatetimeUsage():
     print(datetime.timedelta.min)
     print(datetime.timedelta.max)
     print(datetime.timedelta.resolution)
+    exampleTimeDelta = datetime.timedelta(hours = 5)
+    exampleTimeZone = datetime.timezone(exampleTimeDelta)
+    print(datetime.timezone.min)
+    print(datetime.timezone.max)
+    print(exampleTimeZone.utcoffset(None))
+    print(exampleTimeZone.tzname(None))
 showDatetimeUsage()
